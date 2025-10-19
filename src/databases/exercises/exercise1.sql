@@ -1,0 +1,9 @@
+--Exercise 1: Create and Populate a Table
+--TODO:
+--Create a table named books with columns:
+--id (primary key)
+--title (text)
+--author (text)
+--price (decimal)
+--year_published (integer)
+--Insert 4 different books into it.

@@ -1,0 +1,7 @@
+--Exercise 6: Bonus Challenge – Many-to-Many
+--TODO:
+--Create a table students (id, name).
+--Create a table courses (id, title).
+--Create a table enrollments to link students and courses.
+--Insert data to show at least one student enrolled in multiple courses.
+--Write a query to list all students and their enrolled courses.

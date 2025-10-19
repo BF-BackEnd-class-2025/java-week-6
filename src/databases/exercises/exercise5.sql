@@ -1,0 +1,5 @@
+--Exercise 5: Using JOINs
+--TODO:
+--Write a query showing each book and its author name.
+--Show all authors with the number of books they wrote.
+--Sort authors by number of books in descending order.

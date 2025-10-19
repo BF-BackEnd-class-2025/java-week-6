@@ -1,0 +1,5 @@
+--Exercise 3: Update and Delete
+--TODO:
+--Update one book’s price to 19.99.
+--Delete all books older than 2010.
+--Show remaining rows.

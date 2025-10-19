@@ -1,0 +1,8 @@
+--Exercise 4: Relationships Between Tables
+--TODO:
+--Create a table authors with:
+--id (primary key)
+--name
+--country
+--Add a column author_id in books that references authors(id).
+--Insert data linking books to their authors.
