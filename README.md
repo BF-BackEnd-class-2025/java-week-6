@@ -75,16 +75,6 @@ Students will learn how to connect Java programs to databases such as **PostgreS
 
 ---
 
-## Activities
-
-* Create and connect to a **PostgreSQL/MySQL** database from Java
-* Write code to **insert and read data** from a table
-* Implement a mini **student or product database** using CRUD operations
-* Experiment with **PreparedStatement** and **ResultSet**
-* Handle **SQL exceptions** gracefully and log messages for debugging
-
----
-
 ## Learning Outcomes
 
 By the end of Week 6, students will:
