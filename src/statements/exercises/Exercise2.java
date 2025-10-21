@@ -8,5 +8,7 @@
 
 package statements.exercises;
 
-public class Exercise2 {
+public class Exercise2
+{
+
 }

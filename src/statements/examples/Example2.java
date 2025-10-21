@@ -27,10 +27,7 @@ public class Example2
         String password = props.getProperty("db.password");
         String sql = "SELECT * FROM students WHERE name = ?";
 
-        try (Connection conn = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/school_db",
-                "postgres",
-                "yourpassword");
+        try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement ps = conn.prepareStatement(sql);
              Scanner scanner = new Scanner(System.in))
         {
@@ -49,9 +46,9 @@ public class Example2
             {
                 System.out.println("❌ No student found with that name.");
             }
-
         }
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
             System.out.println("⚠️ SQL Error: " + e.getMessage());
         }
     }

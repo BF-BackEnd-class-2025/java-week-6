@@ -29,7 +29,8 @@ public class Example3
         String insert2 = "INSERT INTO students (name, age, email) VALUES ('Omar', 23, 'omar@example.com')";
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
-             Statement stmt = conn.createStatement()) {
+             Statement stmt = conn.createStatement())
+        {
 
             conn.setAutoCommit(false); // Start transaction
 

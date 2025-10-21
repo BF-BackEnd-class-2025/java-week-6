@@ -1,11 +1,11 @@
 # 🐘 PostgreSQL – Essential Commands
 
-PostgreSQL is one of the most powerful and widely used **relational database systems**.
-This guide covers the most important commands every Java backend developer must know to interact with databases confidently.
+PostgreSQL is one of the most powerful and widely used **relational database management systems (RDBMS)**.
+This guide covers the essential commands every **Java backend developer** should know to work confidently with databases.
 
 ---
 
-## 📘 1. Database Management Commands
+## 📘 1. Database Management
 
 ### 🧱 Create a Database
 
@@ -17,13 +17,13 @@ CREATE DATABASE school_db;
 
 ---
 
-### 🔍 List Databases
+### 📋 List All Databases
 
 ```sql
 \l
 ```
 
-✅ Lists all databases in PostgreSQL (used in `psql` shell).
+✅ Lists all databases in PostgreSQL (use inside the `psql` shell).
 
 ---
 
@@ -33,7 +33,7 @@ CREATE DATABASE school_db;
 \c school_db
 ```
 
-✅ Switches your current session to `school_db`.
+✅ Connects your current session to the `school_db` database.
 
 ---
 
@@ -43,11 +43,11 @@ CREATE DATABASE school_db;
 DROP DATABASE school_db;
 ```
 
-⚠️ Irreversible — deletes the entire database and its data.
+⚠️ **Irreversible** — permanently deletes the database and all its data.
 
 ---
 
-## 🧩 2. Table Management Commands
+## 🧩 2. Table Management
 
 ### 🏗️ Create a Table
 
@@ -60,17 +60,17 @@ CREATE TABLE students (
 );
 ```
 
-✅ Creates a table with an auto-incrementing `id`, unique email, and non-null `name`.
+✅ Creates a table with an auto-incrementing `id`, unique `email`, and non-null `name`.
 
 ---
 
-### 📋 Show All Tables
+### 📋 List All Tables
 
 ```sql
 \dt
 ```
 
-✅ Lists all tables in the current database.
+✅ Displays all tables in the current database.
 
 ---
 
@@ -80,33 +80,33 @@ CREATE TABLE students (
 \d students
 ```
 
-✅ Displays the columns, data types, and constraints of the `students` table.
+✅ Shows columns, data types, and constraints of the `students` table.
 
 ---
 
-### 🧱 Alter a Table (Add a Column)
+### 🧱 Add a New Column
 
 ```sql
 ALTER TABLE students ADD COLUMN phone VARCHAR(20);
 ```
 
-✅ Adds a new column named `phone`.
+✅ Adds a `phone` column to the `students` table.
 
 ---
 
-### ❌ Drop a Table
+### 💣 Drop a Table
 
 ```sql
 DROP TABLE students;
 ```
 
-⚠️ Removes the table and all its data permanently.
+⚠️ Permanently deletes the table and all its data.
 
 ---
 
 ## 🧾 3. Inserting Data
 
-### 📝 Basic INSERT
+### ✏️ Insert One Record
 
 ```sql
 INSERT INTO students (name, age, email)
@@ -117,7 +117,7 @@ VALUES ('Alice', 22, 'alice@example.com');
 
 ---
 
-### 🧰 Insert Multiple Rows
+### ⚡ Insert Multiple Records
 
 ```sql
 INSERT INTO students (name, age, email)
@@ -126,19 +126,19 @@ VALUES
 ('Clara', 23, 'clara@example.com');
 ```
 
-✅ Efficient way to add multiple records at once.
+✅ Efficiently inserts multiple rows in one query.
 
 ---
 
 ## 🔍 4. Reading Data (SELECT)
 
-### 🧠 Select All Rows
+### 📚 Select All Columns
 
 ```sql
 SELECT * FROM students;
 ```
 
-✅ Retrieves all rows and columns from the table.
+✅ Retrieves all records from the `students` table.
 
 ---
 
@@ -148,17 +148,17 @@ SELECT * FROM students;
 SELECT name, age FROM students;
 ```
 
-✅ Returns only selected fields.
+✅ Returns only selected columns.
 
 ---
 
-### 📌 Filtering with WHERE
+### 🔎 Filter with WHERE
 
 ```sql
 SELECT * FROM students WHERE age > 21;
 ```
 
-✅ Retrieves only rows that match the condition.
+✅ Fetches only records that match a condition.
 
 ---
 
@@ -168,33 +168,33 @@ SELECT * FROM students WHERE age > 21;
 SELECT * FROM students WHERE name LIKE 'A%';
 ```
 
-✅ Finds names starting with “A”.
+✅ Finds all students whose names start with “A”.
 
 ---
 
-### ⚙️ Sorting Results
+### ⚙️ Sort Results
 
 ```sql
 SELECT * FROM students ORDER BY age DESC;
 ```
 
-✅ Sorts results by age (descending order).
+✅ Sorts records by `age` in descending order.
 
 ---
 
-### 🔢 Limiting Results
+### 🔢 Limit Results
 
 ```sql
 SELECT * FROM students LIMIT 5;
 ```
 
-✅ Shows only the first 5 rows.
+✅ Displays only the first 5 rows.
 
 ---
 
 ## 🧮 5. Updating Data
 
-### ✏️ Update One Record
+### ✏️ Update a Record
 
 ```sql
 UPDATE students
@@ -202,34 +202,31 @@ SET email = 'alice@newmail.com'
 WHERE id = 1;
 ```
 
-✅ Updates Alice’s email only.
+✅ Updates a single record safely using `WHERE`.
 
 ---
 
-### ✏️ Update Multiple Records
+### ⚡ Update Multiple Records
 
 ```sql
 UPDATE students
 SET age = age + 1;
 ```
 
-✅ Increments all students’ ages by 1.
-
----
-
-⚠️ Always use `WHERE` to avoid unintentional mass updates.
+✅ Increments the `age` field for all students.
+⚠️ Always use `WHERE` when updating to avoid mass changes.
 
 ---
 
 ## 🗑️ 6. Deleting Data
 
-### ❌ Delete Specific Record
+### ❌ Delete a Specific Record
 
 ```sql
 DELETE FROM students WHERE id = 3;
 ```
 
-✅ Deletes one record by ID.
+✅ Removes one record by ID.
 
 ---
 
@@ -239,11 +236,11 @@ DELETE FROM students WHERE id = 3;
 DELETE FROM students;
 ```
 
-✅ Removes all data (table remains).
+✅ Removes all rows but keeps the table structure.
 
 ---
 
-### 💣 Drop Table Data Safely
+### 💣 Truncate Table (Reset IDs)
 
 ```sql
 TRUNCATE TABLE students RESTART IDENTITY;
@@ -253,7 +250,7 @@ TRUNCATE TABLE students RESTART IDENTITY;
 
 ---
 
-## 🔗 7. Keys and Relationships
+## 🔗 7. Keys & Relationships
 
 ### 🧩 Primary Key
 
@@ -270,7 +267,7 @@ CREATE TABLE departments (
 
 ### 🔑 Foreign Key
 
-Links two tables together (enforces relationships).
+Links two tables together, enforcing referential integrity.
 
 ```sql
 CREATE TABLE employees (
@@ -280,7 +277,7 @@ CREATE TABLE employees (
 );
 ```
 
-✅ Ensures every `department_id` in `employees` exists in `departments`.
+✅ Guarantees that `department_id` in `employees` exists in `departments`.
 
 ---
 
@@ -296,12 +293,12 @@ CREATE TABLE employees (
 ### 🧮 COUNT, SUM, AVG, MIN, MAX
 
 ```sql
-SELECT COUNT(*) FROM students;        -- total students
+SELECT COUNT(*) FROM students;        -- total number of students
 SELECT AVG(age) FROM students;        -- average age
 SELECT MAX(age) FROM students;        -- oldest student
 ```
 
-✅ Use aggregate functions for summary data.
+✅ Aggregate functions summarize data efficiently.
 
 ---
 
@@ -313,7 +310,7 @@ FROM students
 GROUP BY age;
 ```
 
-✅ Groups students by age and counts how many have that age.
+✅ Groups students by age and counts how many share each age.
 
 ---
 
@@ -327,7 +324,7 @@ FROM employees
 JOIN departments ON employees.department_id = departments.id;
 ```
 
-✅ Combines data from two tables where there’s a match.
+✅ Returns records with matching data in both tables.
 
 ---
 
@@ -343,26 +340,28 @@ LEFT JOIN departments ON employees.department_id = departments.id;
 
 ---
 
-## 🔐 10. Constraints
+## 🔐 10. Constraints Overview
 
 | Constraint    | Description              | Example                              |
 |---------------|--------------------------|--------------------------------------|
-| `PRIMARY KEY` | Unique record ID         | `id SERIAL PRIMARY KEY`              |
-| `FOREIGN KEY` | Link between tables      | `REFERENCES departments(id)`         |
-| `UNIQUE`      | Prevent duplicate values | `email VARCHAR(100) UNIQUE`          |
+| `PRIMARY KEY` | Unique record identifier | `id SERIAL PRIMARY KEY`              |
+| `FOREIGN KEY` | Links between tables     | `REFERENCES departments(id)`         |
+| `UNIQUE`      | Prevents duplicates      | `email VARCHAR(100) UNIQUE`          |
 | `NOT NULL`    | Field cannot be empty    | `name VARCHAR(50) NOT NULL`          |
-| `CHECK`       | Validate data            | `age INT CHECK(age > 0)`             |
-| `DEFAULT`     | Assign default value     | `created_at TIMESTAMP DEFAULT NOW()` |
+| `CHECK`       | Validates data           | `age INT CHECK(age > 0)`             |
+| `DEFAULT`     | Assigns default value    | `created_at TIMESTAMP DEFAULT NOW()` |
 
 ---
 
-## 🧰 11. Data Export & Import
+## 🧰 11. Import & Export Data
 
-### 📤 Export Data to CSV
+### 📤 Export Table to CSV
 
 ```sql
 COPY students TO '/tmp/students.csv' DELIMITER ',' CSV HEADER;
 ```
+
+✅ Exports table data to a CSV file.
 
 ---
 
@@ -373,11 +372,11 @@ COPY students(name, age, email)
 FROM '/tmp/students.csv' DELIMITER ',' CSV HEADER;
 ```
 
-✅ Great for bulk data transfers.
+✅ Imports data from a CSV file into the table.
 
 ---
 
-## 🧠 12. User & Permission Management
+## 🧠 12. User & Privilege Management
 
 ### 👤 Create a User
 
@@ -403,16 +402,16 @@ REVOKE ALL PRIVILEGES ON DATABASE school_db FROM sam;
 
 ---
 
-## 🧼 13. Utility Commands
+## 🧼 13. Useful psql Commands
 
 | Command   | Description               |
 |-----------|---------------------------|
 | `\q`      | Exit psql shell           |
 | `\dt`     | List all tables           |
 | `\du`     | List all users            |
-| `\dn`     | List schemas              |
+| `\dn`     | List all schemas          |
 | `\timing` | Show query execution time |
-| `\?`      | Show help in psql         |
+| `\?`      | Show psql help menu       |
 
 ---
 
@@ -424,15 +423,15 @@ REVOKE ALL PRIVILEGES ON DATABASE school_db FROM sam;
 | `SERIAL`     | Auto-increment integer | 1, 2, 3...            |
 | `VARCHAR(n)` | String with limit      | 'Alice'               |
 | `TEXT`       | Long text              | essay content         |
-| `BOOLEAN`    | True/False             | TRUE                  |
+| `BOOLEAN`    | True/False value       | TRUE                  |
 | `DATE`       | Calendar date          | '2025-10-05'          |
 | `TIMESTAMP`  | Date and time          | '2025-10-05 12:00:00' |
 | `NUMERIC`    | Decimal number         | 19.99                 |
-| `JSON`       | Structured data        | '{"name": "Alice"}'   |
+| `JSON`       | Structured JSON data   | '{"name": "Alice"}'   |
 
 ---
 
-## 🧠 Quick Recap Cheat Sheet
+## 🧠 Quick Reference Cheat Sheet
 
 | Task          | Command                                                         |
 |---------------|-----------------------------------------------------------------|
@@ -447,3 +446,4 @@ REVOKE ALL PRIVILEGES ON DATABASE school_db FROM sam;
 | Connect to DB | `\c mydb`                                                       |
 
 ---
+
